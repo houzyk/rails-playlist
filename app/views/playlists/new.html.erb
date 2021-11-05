@@ -1,0 +1,8 @@
+<%= simple_form_for(@playlist) do |f| %>
+  <%= f.input :name%>
+  <%= f.input :genre%>
+  <%= f.input :description%>
+  <%= f.input :photo, as: :file%>
+  <%= f.submit %>
+<% end %>
+<%= link_to "Back", root_path %>
