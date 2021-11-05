@@ -1,4 +1,6 @@
 class PlaylistsController < ApplicationController
+  before_action :set_playlist, only: %i[edit update]
+
   def index
     @playlists = Playlist.all
   end
@@ -16,17 +18,20 @@ class PlaylistsController < ApplicationController
     end
   end
 
-  def edit
-    @playlist = Playlist.find(params[:id])
-  end
+  def edit; end
 
-  def method_name
-
+  def update
+    @playlist.update(playlist_params)
+    redirect_to root_path
   end
 
   private
 
   def playlist_params
     params.require(:playlist).permit(:name, :genre, :description)
+  end
+
+  def set_playlist
+    @playlist = Playlist.find(params[:id])
   end
 end
